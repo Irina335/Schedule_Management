@@ -1,0 +1,8 @@
+<option value="">---------</option>
+{% if rooms %}
+{% for room in rooms %}
+<option value="{{ room.id }}">{{ room.nom_salle }}</option>
+{% endfor %}
+{%else%}
+<option value="">No room aivable</option>
+{% endif %}

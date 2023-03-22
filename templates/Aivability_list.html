@@ -1,0 +1,66 @@
+{% extends 'Teacher_home.html' %}
+{% block content %}
+<div class="text-center">
+  <h1 class="h3 mb-0 text-gray-800"> Status of my aivabilities </h1>
+  <hr>
+</div>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">My aivabilities</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                
+                  <thead>
+                      <tr>
+                          <th>No.</th>
+                          <th>Week </th>
+                          <th>Date</th>
+                          <th>Hour start</th>
+                          <th>Hour end</th>
+                          <th>Status</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for aivability in aivabilities %}
+                      <tr>
+                        
+                          <td>{{aivability.id}}</td>
+                          <td>{{aivability.week_of}}</td>
+                          <td>{{aivability.date_dispo}}</td>
+                          <td>{{aivability.heure_deb}}</td>
+                          <td>{{aivability.heure_fin}}</td>
+                          {% if aivability.status == 0 %}
+                          <td> <a href="#" class="btn btn-secondary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-calendar-times"></i>
+                            </span>
+                            <span class="text">Not taken yet</span>
+                        </a> </td>
+                           {% else %}
+                           <td> <a href="#" class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-calendar-check"></i>
+                            </span>
+                            <span class="text">Already taken</span>
+                        </a> </td>
+                        {%endif%}
+                      </tr>
+                    {%endfor%}
+         
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+{%endblock content%}

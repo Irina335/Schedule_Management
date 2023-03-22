@@ -1,0 +1,99 @@
+{% extends 'home.html' %}
+{% block content %}
+{% include 'SideBar.html' with user=user titre='chalkboard-teacher' %}
+<div class="container-fluid">
+<div class="card shadow mb-4">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+        role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">List of aivabilities </h6>
+    </a>
+    <!-- Card Content - Collapse -->
+    <div class="collapse show" id="collapseCardExample">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable"  width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Teacher</th>
+                            <th>Date</th>
+                            <th>Hour start</th>
+                            <th>Hour end</th>
+                            <th>Status</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for aivability in aivabilities %}
+                      
+                        <tr>
+                            <form  method="GET" action="{% url 'schedule_aivability' %}" >
+                                {% csrf_token %}
+                            <td>
+                               
+                                <div class="form-group col-lg-8"> 
+                                <input  type="text" name="id" class="form-control bg-none border-0 small"
+                                value="{{aivability.id}}">
+                                </div>
+                            </td>
+                            <td> 
+                                <div class="form-group"> 
+                                <input  type="text" name="teacher" class="form-control bg-none border-0 small"
+                                value="{{aivability.formateur_id}}"> 
+                                </div>
+                            </td>
+                            <td> 
+                                <div class="form-group mx-sm-2 mb-1">
+                                <input  type="text" name="date" class="form-control bg-none border-0 small"
+                                value="{{aivability.date_dispo|date:'Y-m-d'}}">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group mx-sm-2 mb-1">
+                                <input  type="text" name="hour_s" class="form-control bg-none border-0 small"
+                                value="{{aivability.heure_deb|time:'H:i'}}" >
+                            </td>
+                            <td> 
+                                <div class="form-group mb-1">
+                                <input  type="text" name="hour_e" class="form-control bg-none border-0 small"
+                                value="{{aivability.heure_fin|time:'H:i'}}" >
+                                </div>
+                            </td>
+                            {% if aivability.status == 0 %}
+                          <td> <button type="submit" class="btn btn-secondary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-calendar-times"></i>
+                            </span>
+                            <span class="text">Not taken yet</span>
+                        </button> 
+                     </td>
+                    </form>
+
+                           {% else %}
+                           <td> <div class="btn btn-success btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-calendar-check"></i>
+                            </span>
+                            <span class="text">Already Taken</span>
+                        </div> </td>
+                        {%endif%}    
+                        </tr>
+                    
+                      {%endfor%}
+                    
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+{%endblock content%}

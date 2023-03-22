@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% block content %}
+{% url 'class_edit_save' as action_path %}
+{% include 'SideBar.html' with user=user %}
+
+<div class="text-center">
+  <h1 class="h3 mb-0 text-gray-800"> Edit Class </h1>
+  <hr>
+</div> 
+<div class="container-fluid">
+  <div class="row justify-content-md-center">   
+    <div class="col-lg-6">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Edit Class no {{id_class}}</h6>
+      </div>
+      <div class="card-body">
+        
+        {% include 'form_template.html' with messages=messages form=form action_path=action_path title="Edit Class" text="edit" %}
+           
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+          
+{%endblock content%}

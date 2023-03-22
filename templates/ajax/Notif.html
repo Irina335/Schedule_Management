@@ -1,0 +1,37 @@
+<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="bell">
+                <i class="fas fa-bell fa-fw" ></i>
+                <!-- Counter - Alerts -->
+                {%if notif == 0 %}
+                {%else%}
+                <span class="badge badge-danger badge-counter" id="notif"> {{notif}}+</span>
+                {%endif%}
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown" id="test">
+                <h6 class="dropdown-header">
+                    Alerts Center
+                </h6>
+                {% if notifs %}
+                {% for n in notifs %}
+                <a class="dropdown-item d-flex align-items-center" href="#" >
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">{{n.created}}</div>
+                        <span class="font-weight">{{n.formateur_id}} {{n.msg}}</span>
+                    </div>
+                </a>
+                {%endfor%}
+                {%else%}
+                <a class="dropdown-item text-center small text-gray-500" href="#">No notification here.</a>
+                {%endif%}
+            </div>
+
+
+
+

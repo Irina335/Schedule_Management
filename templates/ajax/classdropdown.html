@@ -1,0 +1,8 @@
+
+{% if levels %}
+{% for level in levels %}
+<option value="{{ level.id }}">{{ level.niveau_id }}</option>
+{% endfor %}
+{%else%}
+<option value="">No class loaded</option>
+{% endif %}

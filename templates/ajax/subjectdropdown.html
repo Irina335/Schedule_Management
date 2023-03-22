@@ -1,0 +1,12 @@
+<option value="">---------</option>
+{% if subjects %}
+{% for subject in subjects %} 
+{% if  subject.taux_horaire == 0  %}
+<option value="{{ subject.id }}"  disabled>{{ subject.matiere_name }} ( {{subject.formateurId}} )  ****CLOSED****</option>
+{%else%}
+<option value="{{ subject.id }}" >{{ subject.matiere_name }} ( {{subject.formateurId}} )</option>
+{% endif %}
+{% endfor %}
+{%else%}
+<option value="">No subject</option>
+{% endif %}

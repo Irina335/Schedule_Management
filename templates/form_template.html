@@ -1,0 +1,51 @@
+
+<form action="{{action_path}}" id="{{id}}" method="post" class="user" data-url="{{data}}" data-url-next="{{data_next}}">
+        {% csrf_token %}
+              
+                {% for field in form %}
+                <div class="form-group"id="myfield">
+                {{field.error}}
+                {{field.label_tag}}
+                {{field}}
+                </div>
+              
+                 
+                  
+                 
+
+                {% endfor %}
+              
+          
+         
+          <hr>
+          <div class="form-group">
+                <button class="btn btn-secondary btn-user btn-block "><span class="fa fa-{{text}} fa-1x" aria-hidden="true">  </span></button>
+              </div>
+             
+          </form>
+          <div class="row ">
+            {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == 'error' %} 
+            <div class="col-lg-8">
+            <div class="alert alert-danger" role="alert">
+             {{ message }}
+           </div>
+         </div>
+            {% else %}
+            <div class="col-lg-8">
+            <div class="alert alert-success" role="alert">
+             {{ message }}
+           </div>
+         </div>
+           {% endif %}
+           {% endfor %}
+           {% endif %}
+         </div>
+        
+
+
+             
+           
+               
+         

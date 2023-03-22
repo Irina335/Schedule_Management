@@ -1,0 +1,72 @@
+{% extends 'Teacher_home.html' %}
+{% block content %}
+<div class="text-center">
+    <h1 class="h3 mb-0 text-gray-800"> Aivability manage </h1>
+    <hr>
+</div> 
+<div class="container-fluid">
+    <div class="row">   
+        <div class="col-lg-6">          
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Add new aivability!</h6>
+        </div>
+          <div class="card-body">
+            {% url 'aivability_add' as action_path %}
+            {% include 'form_template.html' with messages=messages form=form action_path=action_path title="Add new aivability" text="plus" %}
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Aivability Lists</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Hour start</th>
+                                            <th>Hour end</th>
+                                            <th>Action</th>
+                  
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for aivability in aivabilities %}
+                                        <tr>
+                                            <td>{{aivability.date_dispo}}</td>
+                                            <td>{{aivability.heure_deb}}</td>
+                                            <td>{{aivability.heure_fin}}</td>
+                                            <td>   
+                  
+                                              <a href="#"  class="btn btn-secondary btn-circle"><span class="fa fa-edit" aria-hidden="true"></span></a>
+                  
+                                              <a href="#" class="btn btn-danger btn-circle"><span class="fa fa-minus" aria-hidden="true"></span></a>
+                                             </td>
+                                        </tr>
+                                      {%endfor%}
+                           
+                                    </tbody>
+                                  </table>
+                              </div>
+                    
+                              </div>
+                          </div>
+                        </div>
+                        </div>
+                  </table>
+              </div>
+    
+              </div>
+          </div>
+        </div>
+        </div>
+
+    </div>
+</div>    
+
+ 
+{%endblock content%}

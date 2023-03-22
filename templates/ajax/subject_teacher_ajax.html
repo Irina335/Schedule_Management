@@ -1,0 +1,56 @@
+{% if matiere %}
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Subject Warning</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Subject name</th>
+                            <th>Hour rate</th>
+                            <th>Class</th>
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for subject in matiere %}
+                        <tr>
+                          
+                            <td>{{subject.matiere_name}}</td>
+                            
+                            {% if subject.taux_horaire == 0 %}
+                            <td bgcolor="#E77471">00 h</td>
+  
+                            {% else %}
+                            <td>{{subject.taux_horaire}} h</td>
+                            {%endif%}
+                            <td>{{subject.niveauId}}</td>
+                          
+                        </tr>
+                      {%endfor%}
+           
+                    </tbody>
+                </table >
+            </div>
+        
+        
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $("#exampleModal").modal('show');
+  </script>
+{%endif%}
