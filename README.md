@@ -1,5 +1,5 @@
-Schedule Management Application
-Python/ Django / JQuery /Ajax / Chart JS / Bootstrap
+Schedule Management Application 
+**Python/ Django / JQuery /Ajax / Chart JS / Bootstrap**
 
 This is a web application project to manage the schedule of an university.
 It will generate the schedule of all students groups to the admin and generate also the schedule of each trainers.
